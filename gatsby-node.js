@@ -4,10 +4,10 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
 const axios = require('axios');
 const createNodeHelpers = require('gatsby-node-helpers').default;
 const path = require('path');
+require('dotenv').config({ path: '.env' });
 
 const get = (endpoint, url = 'https://pokeapi.co/api/v2') => axios.get(`${url}${endpoint}`);
 
@@ -43,7 +43,7 @@ exports.sourceNodes = async ({ actions }) => {
   const preparePokemonNode = createNodeFactory('Pokemon');
   const prepareTypeNode = createNodeFactory('Types');
 
-  const limit = (process.env.NODE_ENV === 'development') ? 175 : 1000;
+  const limit = process.env.GATSBY_POKEMON_LIMIT || 1000;
 
   // Get all our pokemon data
   const { data: allPokemonInfo } = await get(`/pokemon-species?limit=${limit}`);
