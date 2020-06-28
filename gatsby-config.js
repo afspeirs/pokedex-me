@@ -1,6 +1,18 @@
-const author = process.env.npm_package_author_name;
-const description = process.env.npm_package_description;
-const version = process.env.npm_package_version;
+require('dotenv').config({ path: '.env' });
+
+const config = require('gatsby-plugin-config').default;
+
+console.log(config);
+
+const {
+  npm_package_author_name: author,
+  npm_package_description: description,
+  npm_package_version: version,
+} = config;
+
+// const author = config.npm_package_author_name;
+// const description = config.npm_package_description;
+// const version = config.npm_package_version;
 
 module.exports = {
   siteMetadata: {
