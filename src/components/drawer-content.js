@@ -83,7 +83,7 @@ const DrawerConent = () => {
         </ListItem>
       </List>
 
-      <List>
+      <List disablePadding>
         <ListItem>
           <ListItemText primary="App version:" />
           <ListItemSecondaryAction>
