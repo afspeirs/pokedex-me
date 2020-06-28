@@ -8,9 +8,11 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PokemonCard from '../components/pokemon-card';
 import { cardContainer, padding } from '../styles/pages.styled';
+import { list } from '../styles/list.styled';
 
 const useStyles = makeStyles({
   cardContainer,
+  list,
   padding,
 });
 
@@ -23,10 +25,12 @@ const PokemonPage = ({ data }) => {
     <Layout>
       <SEO title="Pokemon" />
 
-      <main className={clsx(classes.cardContainer, classes.padding)}>
-        {species.nodes.map((specie) => (
-          <PokemonCard key={specie.order} species={specie} />
-        ))}
+      <main className={classes.padding}>
+        <ul className={clsx(classes.cardContainer, classes.list)}>
+          {species.nodes.map((specie) => (
+            <PokemonCard key={specie.order} species={specie} />
+          ))}
+        </ul>
       </main>
     </Layout>
   );

@@ -1,5 +1,10 @@
 const activeColor = 'rgba(0, 0, 0, 0.15)';
 
+export const list = {
+  margin: 0,
+  padding: 0,
+};
+
 export const listItem = {
   '&:hover, &.active': {
     backgroundColor: activeColor,

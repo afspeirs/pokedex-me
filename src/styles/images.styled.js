@@ -6,5 +6,6 @@ export const imageContainer = {
   '& img': {
     width: 300,
     maxWidth: '100%',
+    maxHeight: 300,
   },
 };
