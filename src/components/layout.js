@@ -29,10 +29,7 @@ Layout.defaultProps = {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  maxWidth: PropTypes.oneOf(
-    PropTypes.bool,
-    PropTypes.string,
-  ),
+  maxWidth: PropTypes.string,
   navTitle: PropTypes.string,
 };
 
