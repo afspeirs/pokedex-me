@@ -19,3 +19,18 @@ export const page = {
   overflowY: 'auto',
   overflowX: 'hidden',
 };
+
+export const root = {
+  display: 'flex',
+  flexDirection: 'column',
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+};
+
+export const scroller = {
+  overflowX: 'hidden',
+  overflowY: 'auto',
+};

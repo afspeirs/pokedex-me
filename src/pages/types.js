@@ -7,11 +7,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import TypeCard from '../components/type-card';
-import { cardContainer, padding } from '../styles/pages.styled';
+import { cardContainer } from '../styles/pages.styled';
+import { list } from '../styles/list.styled';
 
 const useStyles = makeStyles({
   cardContainer,
-  padding,
+  list,
 });
 
 const TypesPage = ({ data }) => {
@@ -20,14 +21,14 @@ const TypesPage = ({ data }) => {
   // console.log(types);
 
   return (
-    <Layout>
+    <Layout maxWidth="xl">
       <SEO title="Pokemon" />
 
-      <main className={clsx(classes.cardContainer, classes.padding)}>
+      <ul className={clsx(classes.cardContainer, classes.list)}>
         {types.nodes.map((type) => (
           <TypeCard key={type.name} type={type} />
         ))}
-      </main>
+      </ul>
     </Layout>
   );
 };

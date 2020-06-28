@@ -1,6 +1,7 @@
 {
   "name": "pokedex-me",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "description": "View information about Pokemon with this PWA",
   "private": true,
   "author": "AFSpeirs",
   "dependencies": {
@@ -8,6 +9,7 @@
     "@material-ui/icons": "^4.9.1",
     "axios": "^0.19.2",
     "clsx": "^1.1.1",
+    "dotenv": "^8.2.0",
     "gatsby": "^2.23.3",
     "gatsby-image": "^2.4.7",
     "gatsby-node-helpers": "^0.3.0",

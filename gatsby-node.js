@@ -4,10 +4,10 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
 const axios = require('axios');
 const createNodeHelpers = require('gatsby-node-helpers').default;
 const path = require('path');
+require('dotenv').config({ path: '.env' });
 
 const get = (endpoint, url = 'https://pokeapi.co/api/v2') => axios.get(`${url}${endpoint}`);
 
@@ -40,14 +40,14 @@ const getTypesData = (array) => Promise.all(
 exports.sourceNodes = async ({ actions }) => {
   const { createNode } = actions;
   const { createNodeFactory } = createNodeHelpers({ typePrefix: 'Pokeapi' });
-  const prepareEvolutionNode = createNodeFactory('Evolution');
   const preparePokemonNode = createNodeFactory('Pokemon');
   const prepareTypeNode = createNodeFactory('Types');
 
+  const limit = process.env.GATSBY_POKEMON_LIMIT || 1000;
+
   // Get all our pokemon data
-  const { data: allPokemonInfo } = await get('/pokemon-species?limit=1000');
-  // const allPokemon = allPokemonInfo.results.map((p) => p.url);
-  const allPokemon = allPokemonInfo.results.map((p) => p.url).slice(0, 151);
+  const { data: allPokemonInfo } = await get(`/pokemon-species?limit=${limit}`);
+  const allPokemon = allPokemonInfo.results.map((pokemon) => pokemon.url);
   const allPokemonData = await getPokemonData(allPokemon);
 
   // Get all our type data
@@ -55,30 +55,9 @@ exports.sourceNodes = async ({ actions }) => {
   const allTypes = allTypesInfo.results.map((p) => p.url);
   const allTypesData = await getTypesData(allTypes);
 
-  // Process data for each pokemon into Gatsby node format
-  const processPokemon = (pokemon) => {
-    // Create the "Pokemon" node for given pokemon
-    const pokemonNode = preparePokemonNode(pokemon);
-
-    // Set up each evolution as a node
-    const evolutionNodes = prepareEvolutionNode(pokemon.evolution_chain);
-    createNode(evolutionNodes);
-    // Attach an array of "Evolution" node ids to 'evolution_chain___NODE' in the Pokémon
-    pokemonNode.evolution_chain___NODE = evolutionNodes.id;
-
-    return pokemonNode;
-  };
-
-  // Process data for each type into Gatsby node format
-  const processType = (type) => {
-    // Create the "Type" node for given pokemon
-    const typeNode = prepareTypeNode(type);
-    return typeNode;
-  };
-
   // Process data into nodes using our helper.
-  allPokemonData.forEach((pokemon) => createNode(processPokemon(pokemon)));
-  allTypesData.forEach((Type) => createNode(processType(Type)));
+  allPokemonData.forEach((pokemon) => createNode(preparePokemonNode(pokemon)));
+  allTypesData.forEach((Type) => createNode(prepareTypeNode(Type)));
 };
 
 exports.createPages = async ({ graphql, actions }) => {

@@ -7,11 +7,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PokemonCard from '../components/pokemon-card';
-import { cardContainer, padding } from '../styles/pages.styled';
+import { cardContainer } from '../styles/pages.styled';
+import { list } from '../styles/list.styled';
 
 const useStyles = makeStyles({
   cardContainer,
-  padding,
+  list,
 });
 
 const PokemonPage = ({ data }) => {
@@ -20,14 +21,14 @@ const PokemonPage = ({ data }) => {
   // console.log(species.nodes);
 
   return (
-    <Layout>
+    <Layout maxWidth="xl">
       <SEO title="Pokemon" />
 
-      <main className={clsx(classes.cardContainer, classes.padding)}>
-        {species.nodes.map((specie) => (
-          <PokemonCard key={specie.order} species={specie} />
+      <ul className={clsx(classes.cardContainer, classes.list)}>
+        {species.nodes.map((pokemon) => (
+          <PokemonCard key={pokemon.order} species={pokemon} />
         ))}
-      </main>
+      </ul>
     </Layout>
   );
 };
