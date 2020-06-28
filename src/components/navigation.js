@@ -42,6 +42,7 @@ const Navigation = ({ title }) => {
       }
     `,
   );
+
   return (
     <>
       <AppBar position="static" elevation={0}>

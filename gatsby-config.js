@@ -1,8 +1,15 @@
+const {
+  npm_package_author_name: author,
+  npm_package_description: description,
+  npm_package_version: version,
+} = process.env;
+
 module.exports = {
   siteMetadata: {
+    author,
+    description,
     title: 'PokedexMe',
-    description: 'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
-    author: 'AFSpeirs',
+    version,
   },
   plugins: [
     {
@@ -10,11 +17,12 @@ module.exports = {
       options: {
         name: 'PokedexMe',
         short_name: 'PokedexMe',
+        description,
         start_url: '/',
         background_color: '#ee1515',
         theme_color: '#ee1515',
         display: 'standalone',
-        icon: 'src/images/logo.png', // This path is relative to the root of the site.
+        icon: 'src/images/logo.png',
       },
     },
     'gatsby-plugin-react-helmet',
