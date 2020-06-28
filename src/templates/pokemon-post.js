@@ -29,42 +29,40 @@ const PokemonPostTemplate = ({ data }) => {
     .slice(-1)[0];
 
   return (
-    <Layout title={name}>
+    <Layout navTitle={name}>
       <SEO
         title={name}
         description={flavorTextEntry.flavor_text}
       />
 
-      <main className={classes.padding}>
-        <div className={classes.imageContainer}>
-          <img
-            src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
-            alt={pokemon.name}
-          />
-        </div>
+      <div className={classes.imageContainer}>
+        <img
+          src={`https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png`}
+          alt={pokemon.name}
+        />
+      </div>
 
-        {/* {pokemon.sprites && (
-          <img
-            src={pokemon.sprites.front_default}
-            alt={name}
-            width="96"
-            height="96"
-          />
-        )} */}
+      {/* {pokemon.sprites && (
+        <img
+          src={pokemon.sprites.front_default}
+          alt={name}
+          width="96"
+          height="96"
+        />
+      )} */}
 
-        <Typography variant="subtitle1" color="textSecondary">
-          {`#${String(pokemon.id).padStart(3, '0')}`}
-        </Typography>
-        <Typography component="h5" variant="h5">
-          {name}
-        </Typography>
+      <Typography variant="subtitle1" color="textSecondary">
+        {`#${String(pokemon.id).padStart(3, '0')}`}
+      </Typography>
+      <Typography component="h5" variant="h5">
+        {name}
+      </Typography>
 
-        <TypeChip types={types} />
+      <TypeChip types={types} />
 
-        <Typography variant="body2">
-          {flavorTextEntry.flavor_text}
-        </Typography>
-      </main>
+      <Typography variant="body2">
+        {flavorTextEntry.flavor_text}
+      </Typography>
     </Layout>
   );
 };

@@ -1,32 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Container } from '@material-ui/core';
 import { createMuiTheme, StylesProvider, ThemeProvider } from '@material-ui/core/styles';
 
 import Navigation from './navigation';
 import theme from '../theme';
 import '../styles/main.css';
 
-const Layout = ({ children, title }) => {
+const Layout = ({ children, maxWidth, navTitle }) => {
   const muiTheme = createMuiTheme(theme);
 
   return (
     <ThemeProvider theme={muiTheme}>
       <StylesProvider injectFirst>
-        <Navigation title={title} />
-
-        {children}
+        <Navigation title={navTitle} />
+        <Container component="main" maxWidth={maxWidth}>
+          {children}
+        </Container>
       </StylesProvider>
     </ThemeProvider>
   );
 };
 
 Layout.defaultProps = {
-  title: '',
+  maxWidth: 'md',
+  navTitle: '',
 };
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string,
+  maxWidth: PropTypes.oneOf(
+    PropTypes.bool,
+    PropTypes.string,
+  ),
+  navTitle: PropTypes.string,
 };
 
 export default Layout;

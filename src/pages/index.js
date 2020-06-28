@@ -19,7 +19,7 @@ const IndexPage = () => {
     <Layout>
       <SEO />
 
-      <main className={classes.padding}>
+      <div className={classes.padding}>
         <Button
           className={classes.marginRight}
           color="primary"
@@ -40,7 +40,7 @@ const IndexPage = () => {
         >
           Types
         </Button>
-      </main>
+      </div>
     </Layout>
   );
 };

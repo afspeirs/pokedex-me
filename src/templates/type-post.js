@@ -22,13 +22,13 @@ const TypePostTemplate = ({ data }) => {
   const name = capitaliseFirstLetter(type.name);
 
   return (
-    <Layout title={name}>
+    <Layout navTitle={name}>
       <SEO
         title={name}
         // description={post.excerpt}
       />
 
-      <main className={classes.padding}>
+      <div className={classes.padding}>
         <Typography component="h5" variant="h5">
           {name}
         </Typography>
@@ -69,7 +69,7 @@ const TypePostTemplate = ({ data }) => {
             <TypeChip types={type.damage_relations.no_damage_to} />
           </>
         )}
-      </main>
+      </div>
     </Layout>
   );
 };
