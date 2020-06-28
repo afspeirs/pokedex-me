@@ -2,7 +2,8 @@ export const card = {
   display: 'inline-flex',
   width: 294,
   height: 144,
-  marginLeft: 16,
+  marginLeft: 8,
+  marginRight: 8,
   marginBottom: 16,
 };
 
