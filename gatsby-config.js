@@ -1,10 +1,9 @@
-const author = process.env.npm_package_author_name;
-const description = process.env.npm_package_description;
-const version = process.env.npm_package_version;
+const description = 'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.';
+const version = '0.2.0';
 
 module.exports = {
   siteMetadata: {
-    author,
+    author: 'AFSpeirs',
     description,
     title: 'PokedexMe',
     version,
