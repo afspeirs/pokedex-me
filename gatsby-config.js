@@ -1,12 +1,11 @@
-const description = 'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.';
-const version = '0.2.0';
+const packageJson = require('./package.json');
 
 module.exports = {
   siteMetadata: {
     author: 'AFSpeirs',
-    description,
+    description: packageJson.description,
     title: 'PokedexMe',
-    version,
+    version: packageJson.version,
   },
   plugins: [
     {
@@ -14,7 +13,7 @@ module.exports = {
       options: {
         name: 'PokedexMe',
         short_name: 'PokedexMe',
-        description,
+        description: packageJson.description,
         start_url: '/',
         background_color: '#ee1515',
         theme_color: '#ee1515',
